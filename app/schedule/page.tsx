@@ -11,7 +11,14 @@ export async function fetchData(): Promise<MatchDay[]> {
     'Sotkamo',
     'Joensuu',
     'Kouvola',
-    'Imatra'
+    'Imatra',
+    'PattU, Raahe',
+    'Koskenkorva',
+    'Manse PP',
+    'Kitee',
+    'JymyJussit',
+    'Hyvinkää',
+    'Kempele'
 
 
   ], [new Date(2023, 5, 5), new Date(2023,6, 7)], []);
@@ -19,14 +26,13 @@ export async function fetchData(): Promise<MatchDay[]> {
 }
 export default async function Schedule() {
   const items = await fetchData();
-  console.log('items', items);
   const dfn = useDateformatter()
   return (
-    <div className="grid h-56 justify-center content-center">
+    <div className="grid justify-center content-center">
 
       <ul>{
         items.map(({ day, matches }) => ((
-          <li>
+          <li className="mb-3">
             {dfn(day)}
             <ul>{
               matches.map(({ home, visitor }) => (

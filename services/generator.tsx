@@ -8,8 +8,9 @@ export async function generate(
   daysNotToPlay: string[]
 ): Promise<MatchDay[]> {
 
+  const shuffledTeams = shuffleArray(teams);
   let currentDate = startDate;
-  console.log('current date', currentDate);
+  console.log('current date', shuffledTeams);
   const matchDays: MatchDay[] = [];
   while (currentDate <= endDate) {
     matchDays.push({
@@ -48,4 +49,13 @@ function createMatchesForDay(currentDate: Date, teams: string[], matchDays: Matc
 
 function random_item(items: string[]): string {
   return items[Math.floor(Math.random() * items.length)];
+}
+
+function shuffleArray(teams: string[]): string[] {
+  let shuffled = teams
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+   
+  return shuffled;
 }
