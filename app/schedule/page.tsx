@@ -36,7 +36,7 @@ export default async function Schedule() {
             {dfn(day)}
             <ul>{
               matches.map(({ home, visitor }) => (
-                <li>{home} - {visitor}</li>
+                <li className="match">{home} - {visitor}</li>
               ))
             }
             </ul>
